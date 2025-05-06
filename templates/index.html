@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎵 AI Music Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Image and Get Music Suggestions 🎶</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" required>
+            <input type="text" name="prompt" placeholder="Describe the image..." required>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                <h2>🎧 GPT Suggestions</h2>
+                <pre>{{ result }}</pre>
+
+                <h3>🖼 Uploaded Image</h3>
+                <img src="{{ image_url }}" style="max-width: 300px;">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
